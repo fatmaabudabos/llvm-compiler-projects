@@ -1,0 +1,351 @@
+
+define int @testBinaryOperator(int %x) {
+
+%r0 = alloca int
+store int %x, int* %r0
+%r1 = load int, int* %r0
+%r2 = seti int 2
+%r3 = int %r1 % int %r2
+%r4 = seti int 7
+%r5 = int %r3 + int %r4
+%r6 = seti int 8
+%r7 = load int, int* %r0
+%r8 = int %r6 * int %r7
+%r9 = seti int 3
+%r10 = int %r8 / int %r9
+%r11 = int %r5 - int %r10
+%r12 = load int, int* %r0
+%r13 = seti int 6
+%r14 = int %r12 << int %r13
+%r15 = int %r11 + int %r14
+%r16 = load int, int* %r0
+%r17 = seti int 2
+%r18 = int %r16 >> int %r17
+%r19 = int %r15 - int %r18
+%r20 = load int, int* %r0
+%r21 = seti int 8
+%r22 = int %r20 & int %r21
+%r23 = int %r19 + int %r22
+%r24 = load int, int* %r0
+%r25 = seti int 7
+%r26 = int %r24 | int %r25
+%r27 = int %r23 - int %r26
+ret int %r27
+
+}
+
+define int @testAssignments(int %x) {
+
+%r28 = alloca int
+store int %x, int* %r28
+%r29 = alloca int
+%r30 = seti int 1
+store int %r30, int* %r29
+%r31 = seti int 2
+store int %r31, int* %r29
+%r32 = load int, int* %r29
+store int %r32, int* %r28
+%r33 = load int, int* %r28
+%r34 = load int, int* %r29
+%r35 = int %r34 + int %r33
+store int %r35, int* %r29
+%r36 = load int, int* %r28
+%r37 = load int, int* %r29
+%r38 = int %r37 * int %r36
+store int %r38, int* %r29
+%r39 = seti int 1
+store int %r39, int* %r29
+%r40 = load int, int* %r29
+ret int %r40
+
+}
+
+define int @testUnaryOperator(int %x) {
+
+%r41 = alloca int
+store int %x, int* %r41
+%r42 = alloca int
+%r43 = load int, int* %r41
+%r44 = - int %r43
+store int %r44, int* %r42
+%r45 = seti int 1
+%r46 = + int %r45
+store int %r46, int* %r41
+%r47 = load int, int* %r41
+%r48 = ~ int %r47
+store int %r48, int* %r42
+%r49 = load int, int* %r41
+%r50 = seti int 1
+%r51 = int %r49 + int %r50
+store int %r51, int* %r41
+%r52 = load int, int* %r42
+%r53 = seti int 1
+%r54 = int %r52 + int %r53
+store int %r54, int* %r42
+%r55 = seti int 2
+store int %r55, int* %r42
+%r56 = alloca int *
+store int * %r41, int ** %r56
+%r57 = load int *, int ** %r56
+%r58 = seti int 8
+store int %r58, int* %r57
+%r59 = load int, int* %r41
+%r60 = seti int 1
+%r61 = int %r59 - int %r60
+store int %r61, int* %r41
+ret int %r59
+
+}
+
+define int @testIfElse(int %x, int %y) {
+
+%r62 = alloca int
+store int %x, int* %r62
+%r63 = alloca int
+store int %y, int* %r63
+%r64 = load int, int* %r62
+%r65 = seti int 1
+%r66 = int %r64 > int %r65
+br %r66, label L3, label L4
+
+L3:
+%r67 = load int, int* %r62
+%r68 = seti int 8
+%r69 = int %r67 < int %r68
+br label L4
+
+L4:
+%r70 = phi(%r66, %r69)
+br %r70, label L0, label L1
+
+L0:
+%r71 = seti int 25
+store int %r71, int* %r62
+br label L2
+
+L1:
+%r72 = seti int 36
+store int %r72, int* %r62
+br label L2
+
+L2:
+%r73 = load int, int* %r63
+ret int %r73
+
+}
+
+define float @testIfWithoutElse(float %x) {
+
+%r74 = alloca float
+store float %x, float* %r74
+%r75 = load float, float* %r74
+%r76 = seti float 1.100000e+00
+%r77 = float %r75 > float %r76
+br %r77, label L9, label L8
+
+L8:
+%r78 = load float, float* %r74
+%r79 = seti float 1.000000e-01
+%r80 = float %r78 < float %r79
+br label L9
+
+L9:
+%r81 = phi(%r77, %r80)
+br %r81, label L5, label L7
+
+L5:
+%r82 = seti float 2.500000e+00
+store float %r82, float* %r74
+br label L7
+
+L7:
+%r83 = seti float 3.000000e+00
+ret float %r83
+
+}
+
+define void @testWhileLoop(int %x) {
+
+%r84 = alloca int
+store int %x, int* %r84
+
+L10:
+%r85 = load int, int* %r84
+%r86 = seti int 10
+%r87 = int %r85 < int %r86
+br %r87, label L11, label L12
+
+L11:
+%r88 = load int, int* %r84
+%r89 = seti int 1
+%r90 = int %r88 + int %r89
+store int %r90, int* %r84
+br label L10
+
+L12:
+ret void
+
+}
+
+define void @testDoWhileLoop() {
+
+%r91 = alloca int
+%r92 = seti int 0
+store int %r92, int* %r91
+
+L13:
+%r93 = load int, int* %r91
+%r94 = seti int 1
+%r95 = int %r93 - int %r94
+store int %r95, int* %r91
+br label L14
+
+L14:
+%r96 = load int, int* %r91
+%r97 = seti int 5
+%r98 = int %r96 > int %r97
+br %r98, label L13, label L15
+
+L15:
+ret void
+
+}
+
+define void @testForLoop() {
+
+%r99 = alloca int
+%r100 = seti int 0
+store int %r100, int* %r99
+br label L16
+
+L16:
+%r101 = load int, int* %r99
+%r102 = seti int 10
+%r103 = int %r101 < int %r102
+br %r103, label L17, label L19
+
+L17:
+%r104 = load int, int* %r99
+%r105 = seti int 2
+%r106 = int %r104 + int %r105
+store int %r106, int* %r99
+br label L18
+
+L18:
+%r107 = load int, int* %r99
+%r108 = seti int 1
+%r109 = int %r107 + int %r108
+store int %r109, int* %r99
+br label L16
+
+L19:
+ret void
+
+}
+
+define void @testBreakAndContinue(int %x, int %y) {
+
+%r110 = alloca int
+store int %x, int* %r110
+%r111 = alloca int
+store int %y, int* %r111
+
+L20:
+%r112 = load int, int* %r110
+%r113 = seti int 9
+%r114 = int %r112 < int %r113
+br %r114, label L21, label L22
+
+L21:
+%r115 = seti int 2
+store int %r115, int* %r110
+%r116 = load int, int* %r110
+%r117 = seti int 4
+%r118 = int %r116 < int %r117
+br %r118, label L23, label L24
+
+L23:
+br label L22
+br label L25
+
+L24:
+br label L20
+br label L25
+
+L25:
+%r119 = seti int 3
+store int %r119, int* %r110
+br label L20
+
+L22:
+ret void
+
+}
+
+define char @testCharLiteral(char %x) {
+
+%r120 = alloca char
+store char %x, char* %r120
+%r121 = seti char 97
+store char %r121, char* %r120
+%r122 = seti char 98
+ret char %r122
+
+}
+
+define int @testTernaryOperator(int %x, int %y) {
+
+%r123 = alloca int
+store int %x, int* %r123
+%r124 = alloca int
+store int %y, int* %r124
+%r125 = load int, int* %r123
+%r126 = load int, int* %r124
+%r127 = int %r125 > int %r126
+br %r127, label L26, label L27
+
+L26:
+%r128 = load int, int* %r123
+%r129 = load int, int* %r124
+%r130 = int %r128 - int %r129
+br label L28
+
+L27:
+%r131 = load int, int* %r124
+%r132 = load int, int* %r123
+%r133 = int %r131 - int %r132
+br label L28
+
+L28:
+%r134 = phi(%r130, %r133)
+ret int %r134
+
+}
+
+define int @testCall(int %x, int * %y) {
+
+%r135 = alloca int
+store int %x, int* %r135
+%r136 = alloca int *
+store int * %y, int ** %r136
+%r137 = load int, int* %r135
+%r138 = load int *, int ** %r136
+%r139 = load int, int* %r138
+%r140 = int %r137 + int %r139
+ret int %r140
+
+}
+
+define int @main() {
+
+%r141 = alloca int
+%r142 = seti int 1
+store int %r142, int* %r141
+%r143 = alloca int
+%r144 = seti int 1
+%r145 = call int @testCall(int %r144, int * %r141)
+store int %r145, int* %r143
+%r146 = seti int 0
+ret int %r146
+
+}
