@@ -34,9 +34,15 @@ ir-generator input.cpp -o output.ir --
 
 ---
 
+## Requirements
+
+- LLVM source code downloaded and built
+- Clang (built as part of LLVM)
+- CMake
+
 ## Build
 
-Both tools are built as Clang tools inside the LLVM source tree. Requires LLVM/Clang source and CMake.
+Both tools are built as Clang tools inside the LLVM source tree.
 
 ```bash
 # From the LLVM source root
