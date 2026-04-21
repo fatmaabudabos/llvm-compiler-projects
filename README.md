@@ -42,7 +42,31 @@ An LLVM optimization pass implementing **Aggressive Dead Code Elimination (ADCE)
 ## Requirements
 - LLVM source code downloaded and built  
 - Clang (built as part of LLVM)  
-- CMake  
+- CMake
+- 
+## Repository Structure
+
+llvm-compiler-projects/
+├── README.md
+├── adce-pass/
+│   ├── ADCEPass.cpp
+│   ├── ADCEPass.h
+│   ├── test1.ll
+│   ├── test1.opt.ll
+│   ├── test2.ll
+│   └── test2.opt.ll
+├── ir-generator/
+│   ├── CMakeLists.txt
+│   ├── IRGenerator.cpp
+│   └── examples/
+│       ├── test.cpp
+│       └── test.ir
+└── source-to-source/
+    ├── CMakeLists.txt
+    ├── SourceToSource.cpp
+    └── examples/
+        ├── after.c
+        └── before.c
 
 ---
 
