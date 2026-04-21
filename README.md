@@ -51,9 +51,5 @@ Both tools are built as Clang tools inside the LLVM source tree.
 
 
 
-## Repository Structure
-
-llvm-compiler-projects/  ├── README.md  ├── source-to-source/  │   ├── SourceToSource.cpp  │   ├── CMakeLists.txt  │   └── examples/  │       ├── before.c  │       └── after.c  ├── ir-generator/  │   ├── IRGenerator.cpp  │   ├── CMakeLists.txt  │   └── examples/  │       ├── test.cpp  │       └── test.ir  └── adce-pass/  ├── Assignment3.cpp  ├── Assignment3.h  └── examples/  ├── test1.ll  ├── test1.opt.ll  ├── test2.ll  └── test2.opt.ll
-
 
 
